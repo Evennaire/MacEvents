@@ -35,6 +35,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
+        if let window = NSApplication.shared.windows.first {
+            window.close()
+        }
+        
         let contentView = ContentView()
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 120, height: 60)
