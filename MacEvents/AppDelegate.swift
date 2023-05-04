@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 import SwiftUI
+import AXSwift
 
 // Your app needs to be code-signed.
 // Your app needs to not have the App Sandbox enabled, and:
@@ -18,7 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var popover: NSPopover!
     
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
         let accessEnabled = AXIsProcessTrustedWithOptions(options)
@@ -27,11 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             let visitor = EventVisitor()
             NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { (event) in
-                visitor.visit(event.asKeyboardEvent())
+                event.asKeyboardEvent().accept(visitor)
             }
 
             NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
-                visitor.visit(event.asMouseEvent())
+                event.asMouseEvent().accept(visitor)
             }
         }
         

@@ -20,4 +20,6 @@ struct MouseEvent: BaseEvent, Codable {
     let y: Double
     
     let click: Int
+    
+    func accept(_ visitor: VisitorDelegate) { visitor.visit(self) }
 }

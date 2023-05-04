@@ -14,4 +14,6 @@ protocol BaseEvent {
     var timestamp: TimeInterval { get set }
     
     var winId: Int { get set }
+    
+    func accept(_ visitor: VisitorDelegate)
 }

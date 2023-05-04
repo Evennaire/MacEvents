@@ -19,4 +19,6 @@ struct KeyboardEvent: BaseEvent, Codable {
     let keyCode: UInt16
     
     let char: String
+    
+    func accept(_ visitor: VisitorDelegate) { visitor.visit(self) }
 }

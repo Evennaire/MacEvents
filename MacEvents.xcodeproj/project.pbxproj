@@ -15,6 +15,7 @@
 		151ED2C72A02127000DC32E2 /* NSEvent+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2C62A02127000DC32E2 /* NSEvent+Serialization.swift */; };
 		151ED2CA2A0215F400DC32E2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 151ED2C92A0215F400DC32E2 /* SwiftyJSON */; };
 		151ED2CC2A02190B00DC32E2 /* MouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2CB2A02190B00DC32E2 /* MouseEvent.swift */; };
+		15586FEC2A02ABAB001B8DB2 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15586FEB2A02ABAB001B8DB2 /* AXSwift */; };
 		30851F0E29F278480003F082 /* MacEventsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0D29F278480003F082 /* MacEventsApp.swift */; };
 		30851F1029F278480003F082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0F29F278480003F082 /* ContentView.swift */; };
 		30851F1229F2784D0003F082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30851F1129F2784D0003F082 /* Assets.xcassets */; };
@@ -43,13 +44,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				151ED2CA2A0215F400DC32E2 /* SwiftyJSON in Frameworks */,
+				15586FEC2A02ABAB001B8DB2 /* AXSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		151ED2BD2A020C1100DC32E2 /* parse */ = {
+		151ED2BD2A020C1100DC32E2 /* event */ = {
 			isa = PBXGroup;
 			children = (
 				151ED2BE2A020C4300DC32E2 /* EventVisitor.swift */,
@@ -59,7 +61,7 @@
 				151ED2CB2A02190B00DC32E2 /* MouseEvent.swift */,
 				151ED2C62A02127000DC32E2 /* NSEvent+Serialization.swift */,
 			);
-			path = parse;
+			path = event;
 			sourceTree = "<group>";
 		};
 		30851F0129F278480003F082 = {
@@ -81,7 +83,7 @@
 		30851F0C29F278480003F082 /* MacEvents */ = {
 			isa = PBXGroup;
 			children = (
-				151ED2BD2A020C1100DC32E2 /* parse */,
+				151ED2BD2A020C1100DC32E2 /* event */,
 				30851F0D29F278480003F082 /* MacEventsApp.swift */,
 				30851F0F29F278480003F082 /* ContentView.swift */,
 				151ED2BB2A02053800DC32E2 /* AppDelegate.swift */,
@@ -118,6 +120,7 @@
 			name = MacEvents;
 			packageProductDependencies = (
 				151ED2C92A0215F400DC32E2 /* SwiftyJSON */,
+				15586FEB2A02ABAB001B8DB2 /* AXSwift */,
 			);
 			productName = MacEvents;
 			productReference = 30851F0A29F278480003F082 /* MacEvents.app */;
@@ -149,6 +152,7 @@
 			mainGroup = 30851F0129F278480003F082;
 			packageReferences = (
 				151ED2C82A0215F400DC32E2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				15586FEA2A02ABAB001B8DB2 /* XCRemoteSwiftPackageReference "AXSwift" */,
 			);
 			productRefGroup = 30851F0B29F278480003F082 /* Products */;
 			projectDirPath = "";
@@ -396,6 +400,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		15586FEA2A02ABAB001B8DB2 /* XCRemoteSwiftPackageReference "AXSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tmandry/AXSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -403,6 +415,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 151ED2C82A0215F400DC32E2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		15586FEB2A02ABAB001B8DB2 /* AXSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15586FEA2A02ABAB001B8DB2 /* XCRemoteSwiftPackageReference "AXSwift" */;
+			productName = AXSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
