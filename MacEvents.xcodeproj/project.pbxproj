@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2BB2A02053800DC32E2 /* AppDelegate.swift */; };
-		151ED2BF2A020C4300DC32E2 /* EventVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2BE2A020C4300DC32E2 /* EventVisitor.swift */; };
-		151ED2C12A020C6C00DC32E2 /* VisitorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2C02A020C6C00DC32E2 /* VisitorDelegate.swift */; };
-		151ED2C32A020C7C00DC32E2 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2C22A020C7C00DC32E2 /* KeyboardEvent.swift */; };
-		151ED2C52A020C8900DC32E2 /* BaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2C42A020C8900DC32E2 /* BaseEvent.swift */; };
-		151ED2C72A02127000DC32E2 /* NSEvent+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2C62A02127000DC32E2 /* NSEvent+Serialization.swift */; };
 		151ED2CA2A0215F400DC32E2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 151ED2C92A0215F400DC32E2 /* SwiftyJSON */; };
-		151ED2CC2A02190B00DC32E2 /* MouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2CB2A02190B00DC32E2 /* MouseEvent.swift */; };
 		15586FEC2A02ABAB001B8DB2 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15586FEB2A02ABAB001B8DB2 /* AXSwift */; };
+		15B248192A1E3D0000B6F55F /* Reflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B248182A1E3D0000B6F55F /* Reflectable.swift */; };
+		15B2481E2A1E55DE00B6F55F /* TimeInteval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */; };
+		15B248202A1E5C1400B6F55F /* EventType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */; };
+		15B248222A1F1ADC00B6F55F /* Device+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B248212A1F1ADC00B6F55F /* Device+Extension.swift */; };
 		30851F0E29F278480003F082 /* MacEventsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0D29F278480003F082 /* MacEventsApp.swift */; };
 		30851F1029F278480003F082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0F29F278480003F082 /* ContentView.swift */; };
 		30851F1229F2784D0003F082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30851F1129F2784D0003F082 /* Assets.xcassets */; };
@@ -24,12 +22,10 @@
 
 /* Begin PBXFileReference section */
 		151ED2BB2A02053800DC32E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		151ED2BE2A020C4300DC32E2 /* EventVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVisitor.swift; sourceTree = "<group>"; };
-		151ED2C02A020C6C00DC32E2 /* VisitorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorDelegate.swift; sourceTree = "<group>"; };
-		151ED2C22A020C7C00DC32E2 /* KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEvent.swift; sourceTree = "<group>"; };
-		151ED2C42A020C8900DC32E2 /* BaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEvent.swift; sourceTree = "<group>"; };
-		151ED2C62A02127000DC32E2 /* NSEvent+Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Serialization.swift"; sourceTree = "<group>"; };
-		151ED2CB2A02190B00DC32E2 /* MouseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseEvent.swift; sourceTree = "<group>"; };
+		15B248182A1E3D0000B6F55F /* Reflectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reflectable.swift; sourceTree = "<group>"; };
+		15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInteval+Extension.swift"; sourceTree = "<group>"; };
+		15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extension.swift"; sourceTree = "<group>"; };
+		15B248212A1F1ADC00B6F55F /* Device+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extension.swift"; sourceTree = "<group>"; };
 		30851F0A29F278480003F082 /* MacEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30851F0D29F278480003F082 /* MacEventsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEventsApp.swift; sourceTree = "<group>"; };
 		30851F0F29F278480003F082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,14 +50,19 @@
 		151ED2BD2A020C1100DC32E2 /* event */ = {
 			isa = PBXGroup;
 			children = (
-				151ED2BE2A020C4300DC32E2 /* EventVisitor.swift */,
-				151ED2C02A020C6C00DC32E2 /* VisitorDelegate.swift */,
-				151ED2C42A020C8900DC32E2 /* BaseEvent.swift */,
-				151ED2C22A020C7C00DC32E2 /* KeyboardEvent.swift */,
-				151ED2CB2A02190B00DC32E2 /* MouseEvent.swift */,
-				151ED2C62A02127000DC32E2 /* NSEvent+Serialization.swift */,
+				15B248182A1E3D0000B6F55F /* Reflectable.swift */,
 			);
 			path = event;
+			sourceTree = "<group>";
+		};
+		15B2481C2A1E55B200B6F55F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */,
+				15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */,
+				15B248212A1F1ADC00B6F55F /* Device+Extension.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		30851F0129F278480003F082 = {
@@ -83,6 +84,7 @@
 		30851F0C29F278480003F082 /* MacEvents */ = {
 			isa = PBXGroup;
 			children = (
+				15B2481C2A1E55B200B6F55F /* utils */,
 				151ED2BD2A020C1100DC32E2 /* event */,
 				30851F0D29F278480003F082 /* MacEventsApp.swift */,
 				30851F0F29F278480003F082 /* ContentView.swift */,
@@ -180,15 +182,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151ED2C12A020C6C00DC32E2 /* VisitorDelegate.swift in Sources */,
+				15B248222A1F1ADC00B6F55F /* Device+Extension.swift in Sources */,
 				151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */,
-				151ED2C72A02127000DC32E2 /* NSEvent+Serialization.swift in Sources */,
+				15B248192A1E3D0000B6F55F /* Reflectable.swift in Sources */,
+				15B2481E2A1E55DE00B6F55F /* TimeInteval+Extension.swift in Sources */,
 				30851F1029F278480003F082 /* ContentView.swift in Sources */,
 				30851F0E29F278480003F082 /* MacEventsApp.swift in Sources */,
-				151ED2BF2A020C4300DC32E2 /* EventVisitor.swift in Sources */,
-				151ED2C32A020C7C00DC32E2 /* KeyboardEvent.swift in Sources */,
-				151ED2CC2A02190B00DC32E2 /* MouseEvent.swift in Sources */,
-				151ED2C52A020C8900DC32E2 /* BaseEvent.swift in Sources */,
+				15B248202A1E5C1400B6F55F /* EventType+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

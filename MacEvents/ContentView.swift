@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        EmptyView()
+        Button("退出") {
+            NSApplication.shared.terminate(nil)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .ignoresSafeArea()
     }
 }
 

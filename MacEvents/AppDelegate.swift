@@ -8,30 +8,26 @@
 import Foundation
 import AppKit
 import SwiftUI
+import SwiftyJSON
 import AXSwift
-
-// Your app needs to be code-signed.
-// Your app needs to not have the App Sandbox enabled, and:
-// Your app needs to be registered in the Security and Privacy preference pane, under Accessibility.
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var popover: NSPopover!
     
+    // Your app needs to be code-signed.
+    // Your app needs to not have the App Sandbox enabled, and:
+    // Your app needs to be registered in the Security and Privacy preference pane, under Accessibility.
     func applicationDidFinishLaunching(_ notification: Notification) {
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
         let accessEnabled = AXIsProcessTrustedWithOptions(options)
         if !accessEnabled {
             print("请打开无障碍权限")
         } else {
-            let visitor = EventVisitor()
-            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { (event) in
-                event.asKeyboardEvent().accept(visitor)
-            }
-
-            NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
-                event.asMouseEvent().accept(visitor)
+            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown, .leftMouseDown, .leftMouseDragged]) { event in
+                let json = JSON(event.reflected())
+                print(json)
             }
         }
         
@@ -41,13 +37,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let contentView = ContentView()
         let popover = NSPopover()
-        popover.contentSize = NSSize(width: 120, height: 60)
+        popover.contentSize = NSSize(width: 80, height: 60)
         popover.behavior = .transient
         popover.contentViewController = NSHostingController(rootView: contentView)
         self.popover = popover
         
         statusBarItem.button?.title = "MacEvents"
-        statusBarItem.button?.action = #selector(NSApplication.shared.terminate(_:))
+        statusBarItem.button?.action = #selector(togglePopover(_:))
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
