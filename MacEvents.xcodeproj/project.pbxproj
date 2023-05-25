@@ -47,14 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		151ED2BD2A020C1100DC32E2 /* event */ = {
-			isa = PBXGroup;
-			children = (
-				15B248182A1E3D0000B6F55F /* Reflectable.swift */,
-			);
-			path = event;
-			sourceTree = "<group>";
-		};
 		15B2481C2A1E55B200B6F55F /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,10 +77,10 @@
 			isa = PBXGroup;
 			children = (
 				15B2481C2A1E55B200B6F55F /* utils */,
-				151ED2BD2A020C1100DC32E2 /* event */,
 				30851F0D29F278480003F082 /* MacEventsApp.swift */,
 				30851F0F29F278480003F082 /* ContentView.swift */,
 				151ED2BB2A02053800DC32E2 /* AppDelegate.swift */,
+				15B248182A1E3D0000B6F55F /* Reflectable.swift */,
 				30851F1129F2784D0003F082 /* Assets.xcassets */,
 				30851F1629F2784D0003F082 /* MacEvents.entitlements */,
 				30851F1329F2784D0003F082 /* Preview Content */,

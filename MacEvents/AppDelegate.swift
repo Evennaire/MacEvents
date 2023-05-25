@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !accessEnabled {
             print("请打开无障碍权限")
         } else {
-            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown, .leftMouseDown, .leftMouseDragged]) { event in
+            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown, .leftMouseDown, .rightMouseDown, .leftMouseDragged, .scrollWheel]) { event in
                 let json = JSON(event.reflected())
                 print(json)
             }
