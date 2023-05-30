@@ -9,7 +9,7 @@ import Foundation
 import IOKit
 
 func getDeviceUUID() -> String? {
-    let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+    let platformExpert = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
     if platformExpert != IO_OBJECT_NULL {
         let serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert, "IOPlatformUUID" as CFString, kCFAllocatorDefault, 0)
         IOObjectRelease(platformExpert)

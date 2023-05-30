@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13CEEE732A25CB32009636D2 /* JsonWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CEEE722A25CB32009636D2 /* JsonWriter.swift */; };
 		151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2BB2A02053800DC32E2 /* AppDelegate.swift */; };
 		151ED2CA2A0215F400DC32E2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 151ED2C92A0215F400DC32E2 /* SwiftyJSON */; };
 		15586FEC2A02ABAB001B8DB2 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15586FEB2A02ABAB001B8DB2 /* AXSwift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13CEEE722A25CB32009636D2 /* JsonWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonWriter.swift; sourceTree = "<group>"; };
 		151ED2BB2A02053800DC32E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15B248182A1E3D0000B6F55F /* Reflectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reflectable.swift; sourceTree = "<group>"; };
 		15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInteval+Extension.swift"; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */,
 				15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */,
 				15B248212A1F1ADC00B6F55F /* Device+Extension.swift */,
+				13CEEE722A25CB32009636D2 /* JsonWriter.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				15B248222A1F1ADC00B6F55F /* Device+Extension.swift in Sources */,
 				151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */,
+				13CEEE732A25CB32009636D2 /* JsonWriter.swift in Sources */,
 				15B248192A1E3D0000B6F55F /* Reflectable.swift in Sources */,
 				15B2481E2A1E55DE00B6F55F /* TimeInteval+Extension.swift in Sources */,
 				30851F1029F278480003F082 /* ContentView.swift in Sources */,
@@ -311,7 +315,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacEvents/Preview Content\"";
-				DEVELOPMENT_TEAM = JW7UJ266Q7;
+				DEVELOPMENT_TEAM = W7VNF6243S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -321,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = even.MacEvents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,7 +345,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacEvents/Preview Content\"";
-				DEVELOPMENT_TEAM = JW7UJ266Q7;
+				DEVELOPMENT_TEAM = W7VNF6243S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -351,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = even.MacEvents;
 				PRODUCT_NAME = "$(TARGET_NAME)";

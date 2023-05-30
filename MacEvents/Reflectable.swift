@@ -63,7 +63,7 @@ extension NSEvent : Reflectable {
     /// key-value pairs.
     func reflected() -> [String : Any?]  {
         var dict = [String : Any?]()
-        dict["timestamp"] = timestamp.formatted("yyyy-MM-dd HH:mm:ss")
+        dict["timestamp"] = Int64(Date().timeIntervalSince1970 * 1000)
         dict["event"] = "\(EventType(rawValue: type.rawValue)!)"
         dict["x"] = locationInWindow.x
         dict["y"] = locationInWindow.y
@@ -76,7 +76,7 @@ extension NSEvent : Reflectable {
             dict["deltaX"] = deltaX
             dict["deltaY"] = deltaY
         case .keyUp, .keyDown:
-            dict["character"] = characters ?? "undefined"
+            dict["character"] = charactersIgnoringModifiers ?? "undefined"
         default:
             break
         }
