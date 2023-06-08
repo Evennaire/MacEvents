@@ -8,17 +8,17 @@
 import Foundation
 import SwiftyJSON
 
-protocol Buildable {
+protocol Buildable: AnyObject {
 
     typealias Attributes = [String: Any]
 
     var attributes: Attributes { get set }
 
     @discardableResult
-    mutating func addKey(_ value: Any, forKey key: String) -> Self
+    func addKey(_ value: Any, forKey key: String) -> Self
 
     @discardableResult
-    mutating func addKey(_ value: Any, forKey key: String, _ withConditionallyChecked: () -> Bool) -> Self
+    func addKey(_ value: Any, forKey key: String, _ withConditionallyChecked: () -> Bool) -> Self
 
     func build() -> Attributes
 }
@@ -26,13 +26,13 @@ protocol Buildable {
 extension Buildable {
 
     @discardableResult
-    mutating func addKey(_ value: Any, forKey key: String) -> Self {
+    func addKey(_ value: Any, forKey key: String) -> Self {
         attributes[key] = value
         return self
     }
 
     @discardableResult
-    mutating func addKey(_ value: Any, forKey key: String, _ withConditionallyChecked: () -> Bool) -> Self {
+    func addKey(_ value: Any, forKey key: String, _ withConditionallyChecked: () -> Bool) -> Self {
         if withConditionallyChecked() {
             attributes[key] = value
         }

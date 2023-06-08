@@ -21,40 +21,36 @@ final class AccessibilityBuilder: Buildable {
     }
     
     func addTitle(x: CGFloat, y: CGFloat) -> AccessibilityBuilder {
-        var instance = self
         if let title: String = try? element.attribute(.title), title != "" {
-            instance.addKey(title, forKey: "title")
+            addKey(title, forKey: "title")
         } else {
             if let application = NSWorkspace.shared.frontmostApplication,
                 let wrappedApplication = Application(application) {
                 let hitResult = hitTest(wrappedApplication, x, y)
                 let hitTitle: String = (try? hitResult?.attribute(.title)) ?? ConstDef.Error.unknownString
-                instance.addKey(hitTitle, forKey: "title")
+                addKey(hitTitle, forKey: "title")
             }
         }
-        return instance
+        return self
     }
     
     func addSize() -> AccessibilityBuilder {
-        var instance = self
         let size: CGSize? = try? element.attribute(.size)
-        instance.addKey(size?.width ?? 0.0, forKey: "width")
-        instance.addKey(size?.height ?? 0.0, forKey: "height")
+        addKey(size?.width ?? 0.0, forKey: "width")
+        addKey(size?.height ?? 0.0, forKey: "height")
         return self
     }
     
     func addPosition() -> AccessibilityBuilder {
-        var instance = self
         let pos: CGPoint? = try? element.attribute(.position)
-        instance.addKey(pos?.x ?? 0.0, forKey: "x")
-        instance.addKey(pos?.y ?? 0.0, forKey: "y")
+        addKey(pos?.x ?? 0.0, forKey: "x")
+        addKey(pos?.y ?? 0.0, forKey: "y")
         return self
     }
     
     func addRole() -> AccessibilityBuilder {
-        var instance = self
         let role: String? = try? element.attribute(.role)
-        instance.addKey(role ?? ConstDef.Error.unknownString, forKey: "role")
+        addKey(role ?? ConstDef.Error.unknownString, forKey: "role")
         return self
     }
 }

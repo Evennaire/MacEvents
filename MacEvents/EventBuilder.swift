@@ -13,28 +13,24 @@ final class EventBuilder: Buildable {
     var attributes = Attributes()
 
     func addTimestamp(_ duration: TimeInterval, withFormat format: String) -> EventBuilder {
-        var instance = self
-        instance.addKey(duration.formatted(format), forKey: "timestamp")
-        return instance
+        addKey(duration.formatted(format), forKey: "timestamp")
+        return self
     }
 
     func addEvent(_ rawValue: UInt) -> EventBuilder {
-        var instance = self
-        instance.addKey("\(NSEvent.EventType(rawValue: rawValue)!)", forKey: "event")
-        return instance
+        addKey("\(NSEvent.EventType(rawValue: rawValue)!)", forKey: "event")
+        return self
     }
 
     func addPosition(_ position: NSPoint) -> EventBuilder {
-        var instance = self
-        instance.addKey(position.x, forKey: "x")
-        instance.addKey(position.y, forKey: "y")
-        return instance
+        addKey(position.x, forKey: "x")
+        addKey(position.y, forKey: "y")
+        return self
     }
 
     func addID(_ uuidString: String) -> EventBuilder {
-        var instance = self
-        instance.addKey(uuidString, forKey: "uuid")
-        return instance
+        addKey(uuidString, forKey: "uuid")
+        return self
     }
 
     func addClipboard() -> EventBuilder {
@@ -50,9 +46,9 @@ final class EventBuilder: Buildable {
                 }
             }
         }
-        var instance = self
-        instance.addKey(clipboardList, forKey: "clipboard")
-        return instance
+        
+        addKey(clipboardList, forKey: "clipboard")
+        return self
     }
 
     func addContext() -> EventBuilder {
@@ -75,28 +71,24 @@ final class EventBuilder: Buildable {
             "changed": false
         ]
         
-        var instance = self
-        instance.addKey(context, forKey: "context")
-        return instance
+        addKey(context, forKey: "context")
+        return self
     }
 
     func addClick(_ clickAmount: Int, _ withConditionallyChecked: () -> Bool) -> EventBuilder {
-        var instance = self
-        instance.addKey(clickAmount, forKey: "click", withConditionallyChecked)
-        return instance
+        addKey(clickAmount, forKey: "click", withConditionallyChecked)
+        return self
     }
 
     func addContinuity(_ deltaX: CGFloat, _ deltaY: CGFloat, _ withConditionallyChecked: () -> Bool) -> EventBuilder {
-        var instance = self
-        instance.addKey(deltaX, forKey: "deltaX", withConditionallyChecked)
-        instance.addKey(deltaY, forKey: "deltaY", withConditionallyChecked)
-        return instance
+        addKey(deltaX, forKey: "deltaX", withConditionallyChecked)
+        addKey(deltaY, forKey: "deltaY", withConditionallyChecked)
+        return self
     }
 
     func addPressedKey(_ key: String, _ withConditionallyChecked: () -> Bool) -> EventBuilder {
-        var instance = self
-        instance.addKey(key, forKey: "character", withConditionallyChecked)
-        return instance
+        addKey(key, forKey: "character", withConditionallyChecked)
+        return self
     }
 }
 
