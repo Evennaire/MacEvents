@@ -12,16 +12,18 @@ import AXSwift
 
 protocol Reflectable {
     
+    typealias Output = [String: Any?]
+    
     /// transform objects to key-value pairs.
-    func reflected() -> [String: Any?]
+    func reflected() -> Output
 }
 
 extension Reflectable {
     
     /// transform PureSwift objects to key-value pairs.
-    func reflected() -> [String: Any?] {
+    func reflected() -> Output {
         let mirror = Mirror(reflecting: self)
-        var dict: [String: Any?] = [:]
+        var dict: Output = [:]
         for child in mirror.children {
             guard let key = child.label else { continue }
             dict[key] = child.value
@@ -33,13 +35,13 @@ extension Reflectable {
 extension Reflectable where Self : NSObject {
 
     /// transform non-Swift KVC-Compliant objects to key-value pairs.
-    func reflected() -> [String : Any?] {
+    func reflected() -> Output {
         var count: UInt32 = 0
         guard let properties = class_copyPropertyList(Self.self, &count) else {
             return [:]
         }
         
-        var dict: [String: Any] = [:]
+        var dict: Output = [:]
         for i in 0..<Int(count) {
             let name = property_getName(properties[i])
             guard let nsKey = NSString(utf8String: name) else {
@@ -61,30 +63,40 @@ extension NSEvent : Reflectable {
 
     /// transform non-Swift non-KVC-Compliant objects (NSEvent Specified) to
     /// key-value pairs.
-    func reflected() -> [String : Any?]  {
-        var dict = [String : Any?]()
-        dict["timestamp"] = Int64(Date().timeIntervalSince1970 * 1000)
-        dict["event"] = "\(EventType(rawValue: type.rawValue)!)"
-        dict["x"] = locationInWindow.x
-        dict["y"] = locationInWindow.y
-        dict["uuid"] = getDeviceUUID()
+    func reflected() -> Output {
+        var eventOutput = EventBuilder()
+            .addTimestamp(timestamp, withFormat: "yyyy-MM-dd HH:mm:ss")
+            .addEvent(type.rawValue)
+            .addPosition(locationInWindow)
+            .addID(DeviceUtils.uuid ?? ConstDef.Error.unknownString)
+            .addClipboard()
+            .addContext()
+            .addClick(click) {
+                type.matches(ConstDef.EventType.touchpad)
+            }
+            .addContinuity(deltaX, deltaY) {
+                type.matches(ConstDef.EventType.panning)
+            }
+            .addPressedKey(pressedKey) {
+                type.matches(ConstDef.EventType.keyboard)
+            }
+            .build()
         
-        switch type {
-        case .leftMouseDown, .rightMouseDown:
-            dict["click"] = clickCount
-        case .scrollWheel, .swipe, .leftMouseDragged, .rightMouseDragged:
-            dict["deltaX"] = deltaX
-            dict["deltaY"] = deltaY
-        case .keyUp, .keyDown:
-            dict["character"] = charactersIgnoringModifiers ?? "undefined"
-        default:
-            break
+        if let application = NSWorkspace.shared.frontmostApplication, let wrappedApplication = Application(application) {
+            eventOutput["focusedWindow"] = application.localizedName
+            var accessibilityElement: AXUIElement?
+            AXUIElementCopyElementAtPosition(wrappedApplication.element, Float(locationInWindow.x), Float(DeviceUtils.height - locationInWindow.y), &accessibilityElement)
+            if let accessibilityElement {
+                let accessibilityOutput = AccessibilityBuilder(accessibilityElement)
+                    .addTitle(x: locationInWindow.x, y: DeviceUtils.height - locationInWindow.y)
+                    .addRole()
+                    .build()
+                eventOutput["element"] = accessibilityOutput
+            }
         }
         
-        if let application = NSWorkspace.shared.frontmostApplication {
-            dict["focusedWindow"] = application.localizedName
-        }
-        
-        return dict
+        return eventOutput
     }
 }
+
+

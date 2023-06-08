@@ -16,12 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var popover: NSPopover!
-    var jsonData: JSON = []
-    var mouseEvents = ["leftMouseDown", "leftMouseUp", "rightMouseDown", "rightMouseUp"]
-    var keyEvents = ["keyDown"]
-    var timestamp: Int64 = Int64(Date().timeIntervalSince1970 * 1000)
+    var jsonArray: JSON = []
     var eventIndex: Int = 0
-    var context: [String: Any] = [:]
+    var lastWindowList = [String]()
+    var observer: Observer!
     
     // Your app needs to be code-signed.
     // Your app needs to not have the App Sandbox enabled, and:
@@ -32,17 +30,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !accessEnabled {
             print("请打开无障碍权限")
         } else {
-            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown, .keyUp, .leftMouseDown, .rightMouseDown, .flagsChanged]) { event in
-                let json = JSON(event.reflected())
+            NSEvent.addGlobalMonitorForEvents(matching: [.keyDown, .keyUp, .leftMouseDown, .rightMouseDown, .flagsChanged]) { [unowned self] event in
+                var json = JSON(event.reflected())
+                json["event_index"].intValue = eventIndex
+                json["uncomplete"].intValue = 0
+                if let windowList = json["context"]["windows_list"].rawValue as? [String] {
+                    let contextualChanges = Set(windowList) != Set(lastWindowList)
+                    json["context"]["changed"].boolValue = contextualChanges
+                    lastWindowList = windowList
+                }
+                jsonArray.arrayObject?.append(json)
                 print(json)
-                                
-                if self.mouseEvents.contains(json["event"].stringValue)   {
-                    self.writeMouseJsonToFile(json: json)
+                
+                let writer = JsonWriter()
+                let timestamp = json["timestamp"]
+                    .stringValue
+                    .split(separator: " ").first!
+                    .replacingOccurrences(of: "[-:\\s]", with: "", options: .regularExpression)
+                let filename = "log_\(timestamp)_event.json"
+                writer.writeAsObject(json, by: filename) { path in
+                    print("事件数据已成功写入文件：\(path)")
+                } exceptionally: { error in
+                    print("写入文件时出错：\(error.localizedDescription)")
                 }
-                if self.keyEvents.contains(json["event"].stringValue)   {
-                    self.writeKeyJsonToFile(json: json)
-                }
-                self.eventIndex += 1
+                
+                eventIndex += 1
             }
         }
         
@@ -68,93 +80,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } else {
                 self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             }
-        }
-    }
-
-    func writeMouseJsonToFile(json: JSON) {
-        var jsonEntries: [String: Any] = writeMouseJson(json: json)
-        jsonEntries["event_index"] = self.eventIndex
-        jsonEntries["clipboard"] = getClickboard()
-        jsonEntries["context"] = getContext()
-        if var uncomplete = jsonEntries["uncomplete"] as? Int {
-            uncomplete -= 1
-            jsonEntries["uncomplete"] = uncomplete
-        }
-        self.jsonData.arrayObject?.append(jsonEntries)
-        writeJsonToFile()
-    }
-    
-    func writeKeyJsonToFile(json: JSON) {
-        var jsonEntries: [String: Any] = writeKeyJson(json: json)
-        jsonEntries["event_index"] = self.eventIndex
-        jsonEntries["clipboard"] = getClickboard()
-        jsonEntries["context"] = getContext()
-        if var uncomplete = jsonEntries["uncomplete"] as? Int {
-            uncomplete -= 1
-            jsonEntries["uncomplete"] = uncomplete
-        }
-        self.jsonData.arrayObject?.append(jsonEntries)
-        writeJsonToFile()
-    }
-
-    func getClickboard() -> [String] {
-        var clipboardList: [String] = []
-        if let pasteboardItems = NSPasteboard.general.pasteboardItems {
-            for item in pasteboardItems {
-                for type in item.types {
-                    if type.rawValue == "public.utf8-plain-text" {
-                        if let string = item.string(forType: type) {
-                            clipboardList.append(string)
-                        }
-                    }
-                }
-            }
-        }
-        return clipboardList
-    }
-    
-    func getContext() -> [String: Any] {
-        let runningApps = NSWorkspace.shared.runningApplications
-        var windowList: [String] = []
-        var windowCount: Int = 0
-        for app in runningApps {
-            guard app.activationPolicy == .regular else {
-                continue
-            }
-            if let localizedName = app.localizedName {
-                windowList.append(localizedName)
-                windowCount += 1
-            }
-        }
-        var context: [String: Any] = [
-            "windows_cnt": windowCount,
-            "windows_list": windowList,
-            "changed": false
-        ]
-        
-        if let preWindowList = self.context["windows_list"] as? [String],
-           let currentWindowList = context["windows_list"] as? [String] {
-            if preWindowList.sorted() == currentWindowList.sorted() {
-                context["changed"] = false
-            } else {
-                context["changed"] = true
-            }
-        }
-        self.context = context
-        return context
-    }
-    
-    func writeJsonToFile() {
-        let fileName = "log_\(self.timestamp)_event.json"
-        let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-        let fileURL = desktopURL.appendingPathComponent(fileName)
-
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: self.jsonData.arrayObject as Any, options: .prettyPrinted)
-            try jsonData.write(to: fileURL)
-            print("事件数据已成功写入文件：\(fileURL.path)")
-        } catch {
-            print("写入 JSON 文件出错：\(error.localizedDescription)")
         }
     }
 }

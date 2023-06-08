@@ -10,11 +10,16 @@
 		13CEEE732A25CB32009636D2 /* JsonWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CEEE722A25CB32009636D2 /* JsonWriter.swift */; };
 		151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151ED2BB2A02053800DC32E2 /* AppDelegate.swift */; };
 		151ED2CA2A0215F400DC32E2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 151ED2C92A0215F400DC32E2 /* SwiftyJSON */; };
+		1541BCEC2A3093C6006F7913 /* AccessibilityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541BCEB2A3093C6006F7913 /* AccessibilityBuilder.swift */; };
+		1541BCEE2A309AB0006F7913 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541BCED2A309AB0006F7913 /* Buildable.swift */; };
+		1541BCF02A30BEA6006F7913 /* UIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541BCEF2A30BEA6006F7913 /* UIElement+Extension.swift */; };
+		1541BCF22A30CBE0006F7913 /* EventBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541BCF12A30CBDF006F7913 /* EventBuilder.swift */; };
+		1541BCF42A30D8B1006F7913 /* ConstDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541BCF32A30D8B1006F7913 /* ConstDef.swift */; };
 		15586FEC2A02ABAB001B8DB2 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15586FEB2A02ABAB001B8DB2 /* AXSwift */; };
 		15B248192A1E3D0000B6F55F /* Reflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B248182A1E3D0000B6F55F /* Reflectable.swift */; };
 		15B2481E2A1E55DE00B6F55F /* TimeInteval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */; };
-		15B248202A1E5C1400B6F55F /* EventType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */; };
-		15B248222A1F1ADC00B6F55F /* Device+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B248212A1F1ADC00B6F55F /* Device+Extension.swift */; };
+		15B248202A1E5C1400B6F55F /* NSEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2481F2A1E5C1400B6F55F /* NSEvent+Extension.swift */; };
+		15B248222A1F1ADC00B6F55F /* DeviceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B248212A1F1ADC00B6F55F /* DeviceUtils.swift */; };
 		30851F0E29F278480003F082 /* MacEventsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0D29F278480003F082 /* MacEventsApp.swift */; };
 		30851F1029F278480003F082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30851F0F29F278480003F082 /* ContentView.swift */; };
 		30851F1229F2784D0003F082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30851F1129F2784D0003F082 /* Assets.xcassets */; };
@@ -24,10 +29,15 @@
 /* Begin PBXFileReference section */
 		13CEEE722A25CB32009636D2 /* JsonWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonWriter.swift; sourceTree = "<group>"; };
 		151ED2BB2A02053800DC32E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1541BCEB2A3093C6006F7913 /* AccessibilityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityBuilder.swift; sourceTree = "<group>"; };
+		1541BCED2A309AB0006F7913 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
+		1541BCEF2A30BEA6006F7913 /* UIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIElement+Extension.swift"; sourceTree = "<group>"; };
+		1541BCF12A30CBDF006F7913 /* EventBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilder.swift; sourceTree = "<group>"; };
+		1541BCF32A30D8B1006F7913 /* ConstDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstDef.swift; sourceTree = "<group>"; };
 		15B248182A1E3D0000B6F55F /* Reflectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reflectable.swift; sourceTree = "<group>"; };
 		15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInteval+Extension.swift"; sourceTree = "<group>"; };
-		15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extension.swift"; sourceTree = "<group>"; };
-		15B248212A1F1ADC00B6F55F /* Device+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extension.swift"; sourceTree = "<group>"; };
+		15B2481F2A1E5C1400B6F55F /* NSEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Extension.swift"; sourceTree = "<group>"; };
+		15B248212A1F1ADC00B6F55F /* DeviceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtils.swift; sourceTree = "<group>"; };
 		30851F0A29F278480003F082 /* MacEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30851F0D29F278480003F082 /* MacEventsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEventsApp.swift; sourceTree = "<group>"; };
 		30851F0F29F278480003F082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,8 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				15B2481D2A1E55DE00B6F55F /* TimeInteval+Extension.swift */,
-				15B2481F2A1E5C1400B6F55F /* EventType+Extension.swift */,
-				15B248212A1F1ADC00B6F55F /* Device+Extension.swift */,
+				15B2481F2A1E5C1400B6F55F /* NSEvent+Extension.swift */,
+				1541BCEF2A30BEA6006F7913 /* UIElement+Extension.swift */,
+				15B248212A1F1ADC00B6F55F /* DeviceUtils.swift */,
+				1541BCF32A30D8B1006F7913 /* ConstDef.swift */,
 				13CEEE722A25CB32009636D2 /* JsonWriter.swift */,
 			);
 			path = utils;
@@ -84,6 +96,9 @@
 				30851F0F29F278480003F082 /* ContentView.swift */,
 				151ED2BB2A02053800DC32E2 /* AppDelegate.swift */,
 				15B248182A1E3D0000B6F55F /* Reflectable.swift */,
+				1541BCED2A309AB0006F7913 /* Buildable.swift */,
+				1541BCEB2A3093C6006F7913 /* AccessibilityBuilder.swift */,
+				1541BCF12A30CBDF006F7913 /* EventBuilder.swift */,
 				30851F1129F2784D0003F082 /* Assets.xcassets */,
 				30851F1629F2784D0003F082 /* MacEvents.entitlements */,
 				30851F1329F2784D0003F082 /* Preview Content */,
@@ -177,14 +192,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15B248222A1F1ADC00B6F55F /* Device+Extension.swift in Sources */,
+				15B248222A1F1ADC00B6F55F /* DeviceUtils.swift in Sources */,
 				151ED2BC2A02053800DC32E2 /* AppDelegate.swift in Sources */,
+				1541BCF42A30D8B1006F7913 /* ConstDef.swift in Sources */,
+				1541BCF22A30CBE0006F7913 /* EventBuilder.swift in Sources */,
 				13CEEE732A25CB32009636D2 /* JsonWriter.swift in Sources */,
 				15B248192A1E3D0000B6F55F /* Reflectable.swift in Sources */,
 				15B2481E2A1E55DE00B6F55F /* TimeInteval+Extension.swift in Sources */,
+				1541BCF02A30BEA6006F7913 /* UIElement+Extension.swift in Sources */,
 				30851F1029F278480003F082 /* ContentView.swift in Sources */,
+				1541BCEC2A3093C6006F7913 /* AccessibilityBuilder.swift in Sources */,
 				30851F0E29F278480003F082 /* MacEventsApp.swift in Sources */,
-				15B248202A1E5C1400B6F55F /* EventType+Extension.swift in Sources */,
+				15B248202A1E5C1400B6F55F /* NSEvent+Extension.swift in Sources */,
+				1541BCEE2A309AB0006F7913 /* Buildable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +335,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacEvents/Preview Content\"";
-				DEVELOPMENT_TEAM = W7VNF6243S;
+				DEVELOPMENT_TEAM = JW7UJ266Q7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -345,7 +365,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacEvents/Preview Content\"";
-				DEVELOPMENT_TEAM = W7VNF6243S;
+				DEVELOPMENT_TEAM = JW7UJ266Q7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

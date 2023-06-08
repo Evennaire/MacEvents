@@ -13,7 +13,6 @@ struct ContentView: View {
             NSApplication.shared.terminate(nil)
         }
         .frame(maxWidth: .infinity, alignment: .center)
-        .ignoresSafeArea()
     }
 }
 
