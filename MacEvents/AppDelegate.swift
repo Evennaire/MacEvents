@@ -48,10 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     .split(separator: " ").first!
                     .replacingOccurrences(of: "[-:\\s]", with: "", options: .regularExpression)
                 let filename = "log_\(timestamp)_event.json"
-                writer.writeAsObject(json, by: filename) { path in
+                writer.writeAsArray(jsonArray, by: filename) { path in
                     print("事件数据已成功写入文件：\(path)")
                 } exceptionally: { error in
-                    print("写入文件时出错：\(error.localizedDescription)")
+                    print(error.localizedDescription)
                 }
                 
                 eventIndex += 1
